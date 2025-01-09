@@ -10,7 +10,7 @@ module.exports = function(passport) {
   passport.use(new passportGoogle({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:5000/auth/google/callback',
+    callbackURL: `${process.env.SERVER_URL}/auth/google/callback`,
   }, async (accessToken, refreshToken, profile, done) => {
     console.log('Google Profile:', profile);
     try {
@@ -43,7 +43,7 @@ module.exports = function(passport) {
   passport.use(new passportFacebook({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: 'http://localhost:5000/auth/facebook/callback',
+    callbackURL: `${process.env.SERVER_URL}/auth/facebook/callback`,
     profileFields: ['id', 'displayName', 'email'],
   }, async (accessToken, refreshToken, profile, done) => {
     try {
@@ -68,7 +68,7 @@ module.exports = function(passport) {
   passport.use(new passportLinkedIn({
     clientID: process.env.LINKEDIN_CLIENT_ID,
     clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-    callbackURL: 'http://localhost:5000/auth/linkedin/callback',
+    callbackURL: `${process.env.SERVER_URL}/auth/linkedin/callback`,
     scope: ['r_emailaddress', 'r_liteprofile'],
   }, async (accessToken, refreshToken, profile, done) => {
     try {

@@ -272,7 +272,7 @@ exports.updateProfile = async (req, res) => {
             fs.unlinkSync(oldPath);
           }
         }
-        user.profilePicture = `http://localhost:5000/uploads/${req.file.filename}`;
+        user.profilePicture = `${process.env.SERVER_URL}/uploads/${req.file.filename}`;
       }
 
       // Save updated user

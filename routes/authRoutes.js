@@ -121,17 +121,17 @@ module.exports = function(app, passport) {
       maxAge: 24 * 60 * 60 * 1000,
       path: '/'
     });
-    res.redirect('http://localhost:5173');
+    res.redirect(process.env.REDIRECT_URL);
   });
   
   app.get('/auth/facebook', passport.authenticate('facebook'));
   app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
-    res.redirect('/dashboard');
+    res.redirect(process.env.REDIRECT_URL);
   });
   
   app.get('/auth/linkedin', passport.authenticate('linkedin'));
   app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
-    res.redirect('/dashboard');
+    res.redirect(process.env.REDIRECT_URL);
   });
 
   // Logout
